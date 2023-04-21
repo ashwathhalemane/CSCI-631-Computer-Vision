@@ -5,12 +5,9 @@ function HW_07_Halemane_Ashwathsreedhar()
 % disp(current_working_directory) 
 
 secret_message_image = 'HW_07_Halemane_Ashwathsreedhar_DIR/ZIP_FILE_OF_IMAGES_for_SEMESTER_2225/Img431_SCAN275__Secret_Mess.jpg';
-raspberry_image = 'HW_07_Halemane_Ashwathsreedhar_DIR/ZIP_FILE_OF_IMAGES_for_SEMESTER_2225/Raspberry_Image.jpg';
-orange_image = 'HW_07_Halemane_Ashwathsreedhar_DIR/ZIP_FILE_OF_IMAGES_for_SEMESTER_2225/Orange_Image.jpg';
 
 HW07_Email1_Cluster_Colors(secret_message_image)
-HW07_Email1_FIND_RASPBERRIES(raspberry_image)
-HW07_Email1_FIND_ORAGES(orange_image)
+
 
 % HWNN_Email1_Cluster_Colors ( ‘ Img_Some__Secret_Mess.jpg ‘ ); (3 pts)
 % This reads in any one of the secret messages, and using k-Means, segments them into different colors.
@@ -47,16 +44,14 @@ function HW07_Email1_Cluster_Colors(secret_message_image)
     imshow(secret_message_image)
 end
 
-
-
-function HW07_Email1_FIND_RASPBERRIES(raspberry_image)
+raspber
+function HW07_Email1_FIND_RASPBERRIES()
     figure
-    imshow(raspberry_image)
+    imshow()
 end
 
-function HW07_Email1_FIND_ORAGES(orange_image)
-    figure
-    imshow(orange_image)
+function HWNN_Email1_FIND_ORAGES()
+
 end
 
 
