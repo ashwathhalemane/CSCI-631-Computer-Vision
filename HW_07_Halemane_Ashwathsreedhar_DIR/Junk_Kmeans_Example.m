@@ -7,7 +7,7 @@ function Junk_Kmeans_Example( fn_in )
     
     im = im2double( imread( fn_in ));
 
-    im = im( 2:2:end, 2:2:end, : );
+    im = im( 2:2:end, 2:2:end, : ); % reduce image into half in both x and y dimensions
     
     im_red  = im( :, :, 1 );
     im_grn  = im( :, :, 2 );
@@ -15,34 +15,47 @@ function Junk_Kmeans_Example( fn_in )
     
     data = [ im_red(:) , im_grn(:) , im_blu(:) ];
     
+    % disp(data) % 943200 * 3
     % Why would Dr. K use these colors to start with??
     Seed_Pts.Color_Starting_Point = [ ...
-       0.0000 0.0000 0.0000 ;   % Black
+       
        1.0000 0.0000 0.0000 ;   % Red
        0.0000 0.9000 0.0000 ;   % Green
        0.0000 0.0000 1.0000 ;   % Blue
-       1.0000 0.0000 1.0000 ;   % Magenta
-       0.2000 0.4000 0.4000 ;   % Cyan
-       1.0000 1.0000 0.0000 ;   % Yellow
-       1.0000 1.0000 1.0000 ;   % White
-       0.7000 0.7000 0.0000 ;   % Brown -- Dark Yellow
-       0.7000 0.4000 0.0000 ;   % Pinkish or maybe orangish
-       0.4000 0.4000 0.4000 ;   % Dark gray
-       0.8000 0.8000 0.8000 ;   % Light gray
+       0.0000 0.0000 0.0000 ;   % Black
+%        Purple: [0.5, 0, 0.5]
+       0.5000 0.0000 0.5000 ;   % Purple
+%        1.0000 0.0000 1.0000 ;   % Magenta
+%        0.2000 0.4000 0.4000 ;   % Cyan
+%        1.0000 1.0000 0.0000 ;   % Yellow
+%        1.0000 1.0000 1.0000 ;   % White
+%        0.7000 0.7000 0.0000 ;   % Brown -- Dark Yellow
+%        0.7000 0.4000 0.0000 ;   % Pinkish or maybe orangish
+%        0.4000 0.4000 0.4000 ;   % Dark gray
+%        0.8000 0.8000 0.8000 ;   % Light gray
     ];
+% 
+%     red 
+% green
+% blue
+% purple
+% black
+
     Seed_Pts.Color_name = { 
-        'Black', ...
+        
         'Red', ...
         'Green', ...
         'Blue', ...
-        'Magenta', ...
-        'Cyan', ...
-        'Yellow', ...
-        'White', ...
-        'Brown', ...
-        'Pinkish', ...
-        'Dark Gray', ...
-        'Light Gray' };
+        'Black', ...
+        'Purple'
+%         'Cyan', ...
+%         'Yellow', ...
+%         'White', ...
+%         'Brown', ...
+%         'Pinkish', ...
+%         'Dark Gray', ...
+%         'Light Gray'
+        };
     
     % Check for stupid mistakes:
     %
@@ -59,12 +72,14 @@ function Junk_Kmeans_Example( fn_in )
     % as long as there are more then 3 seed points:
     n_seeds     = length( Seed_Pts.Color_Starting_Point );
 
-    
+    disp(n_seeds)
     % Time the process of running kmeans:
     tic();
-    [cluster_id, kmeans_center_found] = kmeans( data, n_seeds, 'start', Seed_Pts.Color_Starting_Point );
+%     kmeans(img, num_clusters, 'Distance', 'sqEuclidean', 'Start', cluster_centers);
+    [cluster_id, kmeans_center_found] = kmeans( data, n_seeds, 'Distance', 'sqEuclidean', 'Start', Seed_Pts.Color_Starting_Point );
     kmeans_time = toc();
     
+    disp(cluster_id)
     fprintf('K Means Centers found:\n');
     fprintf(' [ %5.3f, %5.3f, %5.3f ]\n', kmeans_center_found.' );
     
