@@ -14,17 +14,17 @@ function Divide_Raspberries( fn_in )
 %  else
 %       call it a background pixel.
 %
-GET_USER_INPUT = false;
+GET_USER_INPUT = true;
     
     if nargin < 1
-        fn_in = 'Img_Example__Raspberry_Image.jpg';
+        fn_in = 'Raspberry_Image.jpg';
     end
     
     im = im2double( imread( fn_in ) ) ;
     
     im  = im( 1:4:end, 1:4:end, : );
     
-    zoom_figure( );
+%     zoom_figure( );
     
     imagesc( im );
     axis image;
@@ -33,17 +33,17 @@ GET_USER_INPUT = false;
         %  Get location of raspberries from the user.
         fprintf('Click on the raspberries\n');
         beep();
-        [rxs,rys] = ginput();
+        [rxs,rys] = ginput(5);
 
 
         %  Get location of other pixels from the user.
         fprintf('Click on the NON-raspberries\n');
         beep();
-        [bgxs,bgys] = ginput();
+        [bgxs,bgys] = ginput(5);
 
         save temp_matrix.mat rxs rys bgxs bgys;
-    else
-        load temp_matrix.mat;
+%     else
+%         load temp_matrix.mat;
     end
     
     %
