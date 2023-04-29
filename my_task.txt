@@ -1,0 +1,7 @@
+for loop to write a tiff image once the processed image is looking similar to one on the pdf
+
+how to relate labels and 
+
+split data into test and train 
+
+check how to do it on code 
