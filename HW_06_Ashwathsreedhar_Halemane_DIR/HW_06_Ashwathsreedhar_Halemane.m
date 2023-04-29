@@ -2,12 +2,12 @@ function HW_06_Ashwathsreedhar_Halemane()
 
     im_rgb  = im2double( imread( 'peppers.png' ) );
     im_in   = rgb2gray( im_rgb );
-    
-    fltr    = [ -2 0 2 ;
-                -5 0 5 ;
-                -2 0 2 ] /2 /9;
-            
-%     OR 
+%     
+%     fltr    = [ -2 0 2 ;
+%                 -5 0 5 ;
+%                 -2 0 2 ] /2 /9;
+%             
+% %     OR 
    
     fltr    = [ 1  2  1 ;
                 2  4  2 ;
@@ -15,7 +15,7 @@ function HW_06_Ashwathsreedhar_Halemane()
             
 %    OR 
    
-    fltr = fspecial('Gauss', 5, 1 );
+%     fltr = fspecial('Gauss', 5, 2 );
    
     % Run my version of the filter:
     expect_ans = imfilter( im_in, fltr, 'same', 'repl' );
