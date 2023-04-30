@@ -7,13 +7,37 @@ save_files_with_new_name()
         
         for counter = 1:length(file_list)
             fn = file_list(counter).name;
+            
             fprintf(fn + "\n");
+            
             [filepath, name, ~] = fileparts(fn);
             name_without_extension = fullfile(filepath, name);
             fprintf(name_without_extension + "\n")
-            num_str = regexp(name_without_extension, '\d+$', 'match'); % extract the last characters which are numbers
+            updated_file_name = regexp(name_without_extension, '\d+$', 'match'); % extract the last characters which are numbers
+            disp(updated_file_name)
+            new_filename = string(strcat(updated_file_name, '.tif'));
+            disp(new_filename);
             
-            disp(num_str)
+
+            new_folder_path = 'D:\RIT-Spring-2023\Computer Vision\PROJECT\Preprocessed images\'; 
+%             
+%             a = 'C:\Users\me\folder';
+%             b = 'A1B1';
+%             c = 'A';
+%             img = '0001.bmp';
+%             sp = strrep(img, '.', '_1.');
+%             full = fullfile(a,b,c,sp);
+%             imwrite(I,full);
+
+            image_to_read = imread(fn);
+            disp(size(image_to_read))
+%             pre-processing steps comes here
+%             im is the updated image
+            full = fullfile(new_folder_path, new_filename);
+            disp(full);
+            % Set the compression to LZW
+%             options = 'Compression','lzw';
+            imwrite(image_to_read, new_filename,"Compression", "LZW");
         end
 
     
