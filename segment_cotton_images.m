@@ -19,25 +19,18 @@ save_files_with_new_name()
             disp(new_filename);
             
 
-            new_folder_path = 'D:\RIT-Spring-2023\Computer Vision\PROJECT\Preprocessed images\'; 
-%             
-%             a = 'C:\Users\me\folder';
-%             b = 'A1B1';
-%             c = 'A';
-%             img = '0001.bmp';
-%             sp = strrep(img, '.', '_1.');
-%             full = fullfile(a,b,c,sp);
-%             imwrite(I,full);
+            new_folder_path = 'D:\RIT-Spring-2023\Computer Vision\PROJECT\prepro'; 
+
 
             image_to_read = imread(fn);
+            resizing_tiff = image_to_read(:,:,1:3);
             disp(size(image_to_read))
 %             pre-processing steps comes here
 %             im is the updated image
             full = fullfile(new_folder_path, new_filename);
             disp(full);
             % Set the compression to LZW
-%             options = 'Compression','lzw';
-            imwrite(image_to_read, new_filename,"Compression", "LZW");
+            imwrite(resizing_tiff, full, 'tif');
         end
 
     
